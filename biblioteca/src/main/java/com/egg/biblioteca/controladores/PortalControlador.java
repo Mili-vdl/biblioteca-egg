@@ -37,7 +37,14 @@ public class PortalControlador {
     @PostMapping("/registro")
     public String registro(@RequestParam String nombre, @RequestParam String email, @RequestParam String password,
             String password2, ModelMap modelo) {
-        usuarioServicio.registrar(nombre, email, password, password2);
+        try{
+            usuarioServicio.registrar(nombre, email, password, password2);
+            modelo.put("exito", "Usuario registrado correctamente!");
+            return "index.html";
+        } catch (MiException ex) {
+            modelo.put("error", ex.getMessage());
+            return "registro.html";
+        }
     }
 
     @GetMapping("/login")
