@@ -5,9 +5,11 @@
  */
 package com.egg.biblioteca.controladores;
 
+import com.egg.biblioteca.excepciones.MiException;
 import com.egg.biblioteca.servicios.UsuarioServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,6 +45,8 @@ public class PortalControlador {
             return "index.html";
         } catch (MiException ex) {
             modelo.put("error", ex.getMessage());
+            modelo.put("nombre", nombre);
+            modelo.put("email", email);
             return "registro.html";
         }
     }

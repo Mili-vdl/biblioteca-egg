@@ -56,7 +56,7 @@ public class UsuarioServicio implements UserDetailsService {
         if (password.isEmpty() || password.length() <= 5) {
             throw new MiException("La contraseña no puede ser nula o estar vacía y debe tener más de 5 dígitos");
         }
-        if (password.equals(password2)) {
+        if (!password.equals(password2)) {
             throw new MiException("Las contraseñas ingresadas deben ser iguales");
         }
     }
