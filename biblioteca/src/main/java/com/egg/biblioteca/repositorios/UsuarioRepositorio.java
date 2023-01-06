@@ -16,8 +16,8 @@ import org.springframework.stereotype.Repository;
  * @author milip
  */
 @Repository
-public interface UsuarioRepositorio extends JpaRepository<Usuario, String> {
-
-    @Query("select u from Usuario u where u.email = email")
+public interface UsuarioRepositorio extends JpaRepository<Usuario, String> {    
+    
+    @Query("select u from Usuario u where u.email = :email")
     public Usuario buscarPorEmail(@Param("email") String email);
 }
